@@ -15,9 +15,9 @@ const io = new Server(httpServer, { cors: { origin: "*" } });
  * We're just taking the ui build files and linking that with our server
  */
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '../webclient/build')));
+app.use(express.static(path.join(__dirname, './webclient/dist')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../webclient/dist/index.html'));
+  res.sendFile(path.join(__dirname, './webclient/dist/index.html'));
 });
 
 // Serve the frontend application

@@ -24,10 +24,10 @@ This will compile and run the Vue application locally.
 
 - Open a new terminal window/tab.
 
-- Navigate to the server directory:
+- Navigate to the server directory (or you can skip this step and use package.json in the root foolder which is set up in order to use build filles):
 
   ```
-  cd server
+  cd backend
   ```
 
 - Install the server dependencies:
