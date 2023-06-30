@@ -9,9 +9,9 @@ import path from "path";
  * We're just taking the ui build files and linking that with our server
  */
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.use(express.static(path.join(__dirname, '/webclient/build')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
+  res.sendFile(path.join(__dirname, '/webclient/build/index.html'));
 });
 
 // Create express app and http server
