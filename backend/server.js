@@ -3,11 +3,17 @@ import http from "http";
 import { Server } from "socket.io";
 import express from "express";
 import path from "path";
-// const __dirname = path.resolve();
-// app.use(express.static(path.join(__dirname, '/frontend/build')));
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
-// });
+
+/**
+ * Following code is required for build that is deployed on heroku
+ * We're just taking the ui build files and linking that with our server
+ */
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
+});
+
 // Create express app and http server
 const app = express();
 const httpServer = http.Server(app);
