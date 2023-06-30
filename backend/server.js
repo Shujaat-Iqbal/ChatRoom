@@ -4,20 +4,21 @@ import { Server } from "socket.io";
 import express from "express";
 import path from "path";
 
-/**
- * Following code is required for build that is deployed on heroku
- * We're just taking the ui build files and linking that with our server
- */
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, '/webclient/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/webclient/build/index.html'));
-});
 
 // Create express app and http server
 const app = express();
 const httpServer = http.Server(app);
 const io = new Server(httpServer, { cors: { origin: "*" } });
+
+/**
+ * Following code is required for build that is deployed on heroku
+ * We're just taking the ui build files and linking that with our server
+ */
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '../webclient/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../webclient/dist/index.html'));
+});
 
 // Serve the frontend application
 app.use(express.static('public'));
